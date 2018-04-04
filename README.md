@@ -13,12 +13,29 @@
 When matching non-Identifier values, it's often the case that users might want
 to also bind that value to an Identifier while doing the matching. For this
 reason, it's proposed that destructuring be extended with the ability to do
-this sort of binding. `match` will benefit from this change by allowing matching
-operations against values that are also put into identifiers, since identifiers
-are irrefutable patterns.
+this sort of binding. Furthermore, the separate [pattern matching
+proposal](https://github.com/tc39/proposal-pattern-matching) will benefit from
+this change by allowing matching operations against values that are also put
+into identifiers, since identifiers are irrefutable patterns.
 
 The syntax uses an `as` keyword, and looks as follows:
 
+```js
+const {x: {y} as x} = {x: {y: 1}}
+// x is {y: 1}
+// y is 1
+```
+
+Or:
+```js
+function foo ([{y} as x, [z] as zed = [1]]) {
+  // x is {y: ...}
+  // y is x.y
+  // z is runs an initializer if arguments[0][1] is undefined
+}
+```
+
+This applies similarly to `match`:
 ```js
 match (x) {
   {x: {y: 1} as x} => x.y === 1
