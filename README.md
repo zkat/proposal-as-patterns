@@ -12,8 +12,8 @@
 
 When matching non-Identifier values, it's often the case that users might want
 to also bind that value to an Identifier while doing the matching. For this
-reason, it's proposed that destructuring be extended with the ability to do t
-his sort of binding. `match` will benefit from this change by allowing matching
+reason, it's proposed that destructuring be extended with the ability to do
+this sort of binding. `match` will benefit from this change by allowing matching
 operations against values that are also put into identifiers, since identifiers
 are irrefutable patterns.
 
