@@ -38,7 +38,7 @@ function foo ([{y} as x, [z] as zed = [1]]) {
 This applies similarly to `match`:
 ```js
 match (x) {
-  {x: {y: 1} as x} => x.y === 1
+  when {x: {y: 1} as x} ~> console.log(x.y === 1)
 }
 ```
 
